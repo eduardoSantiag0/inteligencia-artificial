@@ -8,8 +8,11 @@ passagem(e, f).
 
 Visitados = [].
 
+caminho(Origem, Destino) :-
+    caminho(Origem, Destino, []).
+    
 % Caso base
-caminho(Origem, Destino, Visitados):-
+caminho(Origem, Destino, _):-
     % Chegou no Destino
     % Visitou todos
 
@@ -20,7 +23,7 @@ caminho(Origem, Destino, Visitados):-
     \+ foi_visitado(Meio, Visitados),
     
     % Ir para o proximo
-    adicionar_visitados(Origem, Visitados),
+    adicionar_visitados(Origem, Visitados, NovosVisitados),
     caminho (Proximo, Destino, Visitados).
 
 
@@ -32,6 +35,5 @@ foi_visitado (Caminho, [_|TAIL]) :-
     foi_visitado(Caminho, TAIL).
 
 
-adicionar_visitados(Caminho, Visitados) :- 
+adicionar_visitados(Caminho, Visitados, NovosVisitados) :-
     NovosVisitados = [Caminho | Visitados].
-

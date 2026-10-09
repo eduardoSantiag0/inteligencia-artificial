@@ -6,37 +6,16 @@
 % Quantidade de agua do Jarro de 3 litros -> Y
 
 
-% Sintaxe de regra: 
-% nome_do_predicado(Argumentos) :-
-%     Condicao,
-%     Acao.
-    % Se jarro X < 2 litros
-    %     Encher jarro X
+% Encher completamente X.
+% Encher completamente Y.
+% Esvaziar X.
+% Esvaziar Y.
+% Transferir água de X para Y, até X esvaziar ou Y encher.
+% Transferir água de Y para X, até Y esvaziar ou X encher.
 
 
-jarros(X, Y). % jarros[X, Y].
+capacidades([4, 3]).
 
-verificar_jarro_x(X) :-
-    X < 2,
-    encher(X, NovaQuantidade),
-    jarros(NovaQuantidade, Y).
+objetivo(2, _).
+objetivo(_, 2).
 
-
-verificar_jarro_y(Y) :-
-    Y < 2
-
-
-Se jarro X == 2 litros
-    Encher jarro Y
-
-Se jarro Y == 2 litros
-    sair
-
-Se jarro Y > 2 litros
-    Encher X com  Y - 2 litros 
-
-
-adicionar_1(Atual, NovaQuantidade) :-
-    NovaQuantidade is Atual +1
-
-Encher jarro Y
